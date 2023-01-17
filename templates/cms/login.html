@@ -1,0 +1,39 @@
+{% extends "base.html" %}
+
+{% block content %}
+<!-- <h1>Log-in from {{ ref_page }}. -- {{ request.META.HTTP_REFERER }} --</h1> -->
+<!-- Temporary comment
+    <p>Please, use the following form to log-in:</p>
+    <form action="." method="post">
+        {{ form.as_p }}
+        {% csrf_token %}
+        <p><input type="submit" value="Log-in"></p>
+    </form>
+End of temporary comment -->
+
+<div id='pop_up'></div>
+
+<div id='auth_wrapper'>
+
+<form action='.' method='post' id='login_form'>
+    <div id='close_auth_form'>
+        <img id='close_auth_cross' src='/static/images/cross20.jpg' />
+    </div>
+    <!--
+    <h3>Авторизация</h3>
+    <div>Логин:</div>
+    <input type="text" name="user_login">
+    <div>Пароль:</div>
+    <input type="password" name="user_password">
+    -->
+    {{ form.as_p }}
+    {% csrf_token %}
+    <div id='auth_buttons'>
+        <input type="button" name="auth_cancel_button" value="Отмена">
+        <input type="submit" name="auth_OK_button" value="Log-in">
+    </div>
+</form>
+
+</div>
+
+{% endblock %}

@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Shake this</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+
+<style type="text/css">
+.shaked1{
+    width: 200px;
+    height: 70px;
+    background-color: #ebaeba;
+    border: solid 3px #000;
+}
+#shaked{
+    /*animation: translate 6s linear;
+    animation: rotate 6s linear infinite;
+    transition: all 2s ease-in-out;*/
+}
+#move, #imove{
+    width: 200px;
+    height: 70px;
+    background-color: #00f;
+    color: #fff;
+    border: solid 3px #000;
+    cursor: pointer;
+}
+#new_move{
+    width: 200px;
+    height: 70px;
+    background-color: #0f0;
+    color: #fff;
+    border: solid 3px #000;
+    cursor: pointer;
+}
+#home, #ihome{
+    width: 200px;
+    height: 70px;
+    background-color: #0ff;
+    color: #fff;
+    border: solid 3px #000;
+    cursor: pointer;
+}
+#start{
+    width: 200px;
+    height: 70px;
+    background-color: #facfac;
+    border: solid 3px #000;
+    cursor: pointer;
+}
+</style>
+
+</head>
+<body><br><br>
+<div id='shaked' class='shaked1' ololo='Pshpsh'>I'm ready to be shocked</div>
+<br>
+<div id='start'>Shake</div><br>
+<div id='move' ololo='Zadnica'>Move</div><br>
+<div id='imove' ololo='iZadnica'>i Move</div><br>
+<div id='ihome'>i Home</div><br>
+<div id='new_move'>New move</div><br><br>
+<div id='home'>Home</div>
+<div style='color: #f00; background-color: #00f;'>ddd</div>
+
+<script type="text/javascript">
+
+save_position = function(elem){
+    pos = elem.position();
+    elem.attr('s_top', pos.top);
+    elem.attr('s_left', pos.left);
+    elem.attr('s_pos', elem.css('position'));
+};
+change_position = function(elem, xtop, xleft){
+    //elem.attr('style', 'position: absolute; top: '+top+'px; left: '+left+'px');
+    elem.css({position: 'absolute', top: xtop, left: xleft});
+};
+move_home = function(elem){
+    elem.css('opacity', '1');
+    $('.gap').each(function(i, elem){$(elem).remove()});
+};
+
+change_position1 = function(elem, xtop, xleft){
+    elem_clone = elem.clone();
+    elem_clone.addClass('gap');
+    //alert(xtop+'---'+xleft);
+    clone_style = 'position:absolute; top:'+xtop+'px;left:'+xleft+'px';
+    //alert(clone_style);
+    elem_clone.attr('style', clone_style);
+    $('body').append(elem_clone);
+    //elem_clone.attr('style', clone_style);
+    //elem_clone.css({position: 'absolute', top: xtop, left: xleft});
+    //change_position(elem_clone, xtop, xleft);
+    elem.css('opacity', '0');
+};
+
+var new_div;
+
+function random20(){
+    //rw = Math.round(Math.random()*20);
+    //alert('Shaking '+rw);
+    return(Math.round(Math.random()*30-15));
+}
+
+wave = function(elem){
+    tr_val = 'translate('+random20()+'px, '+random20()+'px)';
+    //elem.css({transition: 'all 0s'});
+    elem.css({transform: tr_val});
+};
+home = function(elem){
+    elem.css({transform: 'translate(0px, 0px)'});
+}
+
+$(document).ready(function(){
+    //$('#start').on('click', function(elem){
+    //    alert('Ready');
+    //    pos = $('#shaked').position();
+    //    alert('top: '+pos.top+' left: '+pos.left);
+        save_position($('#shaked'))
+    //});
+    $('#move').on('click', function(){
+        alert('Saved: '+$('#shaked').attr('s_top')+'x'+$('#shaked').attr('s_left'));
+    });
+    $('#imove').on('click', function(){
+        change_position1($('#shaked'), 100, 400);
+    });
+    $('#new_move').on('click', function(){
+        //change_position1($('#shaked'), 100, 400);
+        //alert('Yo!');
+        $('#shaked').css({transform: 'translate(100px, 100px) rotate(360deg)'});
+    });
+    $('#home').on('click', function(){
+        $('#shaked').css({transform: 'translate(0px, 0px)'});
+    });
+    $('#start').on('click', function(el){
+        //setInterval(wave($('#shaked')),1000);
+        let timerId = setInterval(() => wave($('#shaked')), 50);
+        setTimeout(() => { clearInterval(timerId); home($('#shaked')); }, 15000);
+    });
+    $('#ihome').on('click', function(el){
+        alert('Ready to move home...');
+    });
+});
+</script>
+
+</body>
+</html>

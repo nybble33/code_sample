@@ -1,0 +1,34 @@
+<html>
+<head>
+    <title>Test</title>
+</head>
+<body>
+    <h1>Alpha line testing goes here.</h1>
+    <p>Town which id is equal to 1: {{ town1 }}</p>
+    {% if trainers1 %}
+    <ol>
+        {% for trainer in trainers1 %}
+        <li>{{ trainer }}</li>
+        {% endfor %}
+    </ol>
+    {% endif %}
+
+    <p>Town which id is equal to 2: {{ town2 }}</p>
+    {% if trainers2 %}
+    <ol>
+        {% for trainer in trainers2 %}
+        <li>{{ trainer }}</li>
+        {% endfor %}
+    </ol>
+    {% endif %}
+
+    <p>Trainer whose id is equal to 4: {{ trainer }}</p>
+    {% if towns %}
+    <ol>
+        {% for town in towns %}
+        <li>{{ town }}</li>
+        {% endfor %}
+    </ol>
+    {% endif %}
+</body>
+</html>

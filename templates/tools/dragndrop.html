@@ -1,0 +1,50 @@
+<html>
+<head>
+    <link rel="icon" href="/static/n_logo.ico">
+    <meta charset="utf-8">
+    <title>Drag and Drop</title>
+    <link rel="stylesheet" type="text/css" href="/static/css/materialize/materialize.css" />
+
+<style>
+.tile{
+    color: #FFF;
+    padding-top: 10px;
+    text-align: center;
+    width: 100px;
+    height: 50px;
+    background-color: #0000FF;
+    border: 2px solid #FF0000;
+    position: relative;
+    top: 50px;
+    left: 100px;
+    cursor: pointer;
+}
+</style>
+
+    <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+    <script>
+        $( function() {
+            $( ".tile"  ).draggable();
+                
+        });
+    </script>
+</head>
+<body>
+    <div class="container">
+        <div class="row card-panel green lighten-3">
+            <div class="col s1 center">
+                <a href="/" title="Home page"><img class="circle" src="/static/images/dragndrop_100.png" alt="Drag and Drop" /></a>
+            </div>
+            <h1 class="col s10 center green-text offset-s1">Drag And Drop</h1>
+        </div>
+        <div class="row">
+            <div d__raggable="true" class="tile ui-widget-content">Ololo</div>
+        </div>
+    </div>
+    </body>
+<script>
+
+
+</script>
+</html>

@@ -1,0 +1,148 @@
+В задании для меня осталось непонятным, как получить все города, принадлежащие объекту, содержащиму город. Связь же идет между городами и тренерами.
+Я реализовал получение связанных объектов в двух направлениях.
+Города:
++----+--------------+
+| id | name         |
++----+--------------+
+|  1 | Москва       |
+|  2 | Самара       |
++----+--------------+
+
+Тренеры:
++----+----------------+
+| id | name           |
++----+----------------+
+|  1 | Иванов         |
+|  2 | Петров         |
+|  3 | Сидоров        |
+|  4 | Кацман         |
++----+----------------+
+
+# models.py
+class Town(models.Model):
+    name = models.CharField("Название", default='', max_length=255)
+
+    class Meta:
+        verbose_name = "Город"
+        verbose_name_plural = "Города"
+
+    def __str__(self):
+        return self.name
+
+
+class Trainer(models.Model):
+    name = models.CharField("Имя тренера", default='', max_length=255)
+    towns = models.ManyToManyField(Town, verbose_name="Города")
+
+    class Meta:
+        verbose_name = "Тренер"
+        verbose_name_plural = "Тренеры"
+
+    def __str__(self):
+        return self.name
+
+#views.py
+def index(request):
+    q1 = Town.objects.get(id=1)
+    t1 = q1.trainer_set.all()
+    # в t1 все тренеры, работающие в Москве
+    q2 = Town.objects.get(id=2)
+    t2 = q2.trainer_set.all()
+    # в t2 все тренеры, работающие в Самаре
+    tr3 = Trainer.objects.get(id=4)
+    q3 = tr3.towns.all()
+    # в q3 все города, в которых работет Кацман
+    return render(request, 'alpha_line/al_index.html',
+        {
+        'town1': q1, 
+        'trainers1': t1, 
+        'town2': q2, 
+        'trainers2': t2,
+        'trainer': tr3,
+        'towns': q3})
+
+# результаты работы кода: http://nybble.ru/alpha_line
+
+GET запрос передается в адресной строке браузера в виде http://www.mysite.com?arg1=12&arg2=34. arg1 и arg2 можно получить в через request.GET['arg1'] и request.GET['arg2'] соответственно.
+POST запрос не виден в адресной строке и получается через request.POST
+
+
+class TrainerNew(models.Model):
+    first_name = models.CharField("Имя тренера", default='', max_length=255)
+    last_name = models.CharField("Фамилия тренера", default='', max_length=255)
+
+    class Meta:
+        verbose_name = "Тренер New"
+        verbose_name_plural = "Тренеры New"
+
+    def __str__(self):
+        return self.name
+
+
+class TrainerNewForm(ModelForm):
+    class Meta:
+        model = TrainerNew
+        fields = ('last_name', 'first_name')
+
+
+# views.py
+def trainer_new(request):
+    tr_form = TrainerNewForm()
+    return render(
+        request,
+        'alpha_line/trainer_new.html',
+        {'form': tr_form}
+        )
+
+
+# trainer_new.html
+<!DOCTYPE html>
+<html>
+<head>
+    <title>New Trainer Form</title>
+</head>
+<body>
+<h1>The form for TrainerNew model</h1>
+
+<form method="POST">
+    {{ form.as_p }}
+    <button type="submit">Save</button>
+</form>
+
+</body>
+</html>
+# результаты работы кода: http://nybble.ru/alpha_line/trainer_new/
+
+
+# в результате будет передан zip архив файла models.py с тектом моделей
+# для выполнения ваших заданий
+def get_zip(request):
+    files_dir = '/home/nybble/nybble/mysite/alpha_line/'
+    file_name = files_dir + 'models.py'
+    file_name_out = 'models.zip'
+
+    s = BytesIO()
+    zip_file = zipfile.ZipFile(s, 'w')
+    zip_file.write(file_name)
+    zip_file.close()
+    resp = HttpResponse(s.getvalue())
+    resp['Content-Disposition'] = 'attachment; filename=%s' % file_name_out
+    return resp
+# работа кода http://nybble.ru/alpha_line/get_zip
+
+
+# для выполнения скрипта создам подпапку management/commands в ней файл с django кодом, например tr_show.py. Запуск этого кода будет возможен через bash команду "paython /<path_to_uwsgi_app>/manage.py tr_show". 
+# tr_show.py
+from django.core.management.base import BaseCommand
+
+from alpha_line.models import Trainer
+
+class Command(BaseCommand):
+
+    def handle(self, *args, **options):
+        trainers = Trainer.objects.all()
+        for tr in trainers:
+            print (tr)
+# будет выведен список всех тренеров из таблицы trainer
+
+Для добавления дополнительных полей к стандартной модели User вместо наследования я бы использовал способ создания дополнительной модели, скажем UserProfile, со свзяью один-к-одному с моделью User.

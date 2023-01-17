@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<head>
+
+<link rel="icon" href="/static/n_logo.ico">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<link rel="stylesheet" href="/static/bootstrap/css/bootstrap.min.css">
+<!--<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.1/font/bootstrap-icons.css">-->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+<!--<link rel="stylesheet" href="/static/bootstrap/css/bootstrap-icons.css">-->
+<style type="text/css">
+
+.bordered{
+border: solid 2px #00F;
+}
+.rbordered{
+border: solid 2px #F00;
+}
+.gbordered{
+border: solid 2px #0F0;
+}
+#login{
+    cursor: pointer;
+}
+</style>
+{% load cms_tags %}
+</head>
+<body>
+{% n_menu request %}
+<div class="container">
+    <div class="col-sm-12">
+        {{ username }}
+    </div>
+    <div class="row">
+        <div class="col-sm-2">
+            <a href="/" title="Домой">
+                <img src="/static/images/n_logo_croped.png" height="100px" alt="NYBBLE" />
+            </a>
+        </div>
+        <div class="col-sm-10">
+            {% if request.user.is_authenticated %}
+            <div id="user_info" class="col-sm-2 offset-sm-10" style="font-size: 1.5em;">
+                {{ request.user.username }}&nbsp;&nbsp;<span class="glyphicon glyphicon-user"></span>
+            </div>
+            {% else %}
+            <div id="login" class="col-sm-2 offset-sm-10" style="font-size: 1.5em;">
+                    Войти&nbsp;&nbsp;<span class="glyphicon glyphicon-log-in"></span>
+            </div>
+            {% endif %}
+            <div class="col-sm-4 text-center">One column</div>
+            <div class="col-sm-4 text-center">Another column</div>
+            <div class="col-sm-4 text-center">Third column</div>
+        </div>
+    </div>
+
+</div>
+
+<div class="container">
+    <div class="row">
+        <div class="col-sm-2 text-center bordered">Col 2</div>
+        <div class="col-sm-10 bordered">
+            <div class="col-sm-2 text-center rbordered">Child col 2</div>
+            <div class="col-sm-2 text-center rbordered">Child col 2</div>
+            <div class="col-sm-8 text-center rbordered">Child col 8</div>
+            <div class="col-sm-4 text-center gbordered">Child col 4</div>
+            <div class="col-sm-5 text-center gbordered">Child col 5</div>
+            <div class="col-sm-3 text-center gbordered">Child col 3</div>            
+        </div>
+    </div>
+</div>
+
+
+<div class="modal fade" id="login_modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 class="modal-title col-sm-12 text-center" id="exampleModalLabel">Вход на сайт</h4>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <form id="login_form">
+        <div class="modal-body">
+            <div class="form-group row">
+                <label for="username" class="col-sm-4 col-form-label text-right">Имя пользователя: </label>
+                <div class="col-sm-8">
+                    <input type="text" class="form-control-plaintext" id="user" name="user" value="">
+                </div>
+            </div>
+            <div class="form-group row">
+                <label for="password" class="col-sm-4 col-form-label text-right">Пароль: </label>
+                <div class="col-sm-8">
+                    <input type="password" name="pwd" class="form-control-plaintext" id="password" value="">
+                </div>
+            </div>
+        </div>
+        <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Отмена</button>
+            <button type="submit" class="btn btn-primary">OK</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+
+<div class="dropdown show">
+  <a class="btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+    Выпадающая ссылка
+  </a>
+
+  <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+    <a class="dropdown-item" href="#">Action</a>
+    <a class="dropdown-item" href="#">Another action</a>
+    <a class="dropdown-item" href="#">Something else here</a>
+  </div>
+</div>
+
+<div class="dropdown">
+  <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+    Кнопка выпадающего списка
+  </button>
+  <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+    <a class="dropdown-item" href="#">Action</a>
+    <a class="dropdown-item" href="#">Another action</a>
+    <a class="dropdown-item" href="#">Something else here</a>
+  </div>
+</div>
+
+    <!--
+    <div class="row">
+        <div class="col-sm-2 offset-sm-10" style="font-size: 1.5em;"><i class="bi bi-person"></i>Войти&nbsp;&nbsp;<span class="glyphicon glyphicon-log-in"></span></div>
+    </div>
+    <div class="row">
+        <div class="col-sm">One column</div>
+        <div class="col-sm">Another column</div>
+        <div class="col-sm">Third column</div>
+    -->
+</body>
+<script type="text/javascript">
+
+$(document).ready(function(){
+    $("#login").on("click", function(){
+        console.log("Ready to open modal window");
+        $("#login_modal").modal("show");
+        $("#login_form").on("submit", function(event){
+            event.preventDefault();
+            console.log("Sending ajax request to /m_login");
+            foo = $(this).serialize();
+            bar = $("#login_form").serialize();
+            console.log(`Request: ${$(this).serialize()}`);
+            $.ajax({
+                url: "/ajax_login/",
+                method: "get",
+                dataType: "json",
+                async: false,
+                data: $(this).serialize() + '&csrfmiddlewaretoken="{{ csrf_token }}"',
+                success: function(data){
+                    console.log("Success");
+                },
+                error: function(data){
+                    console.log("Error");
+                    $("#login_form .modal-body").append("<div class='alert alert-danger'>Неверный ответ сервера</div>");
+                },
+            }).done(function(data){
+                console.log(data);
+                if (data.response == "Error" ){
+                    console.log("Illegal username or password");
+                    $("#login_form .modal-body").append("<div class='alert alert-danger'>Неверное имя пользователя или пароль</div>");
+                } else {
+                    location.reload(true);
+                }
+            });
+            /*
+            $.ajax({
+                url: "/ajax_login/",
+                method: "get",
+                dataType: "json",
+                async: false,
+                data: $(this).serialize() + '&csrfmiddlewaretoken="{{ csrf_token }}"',
+            }).done(function(data){
+                console.log(data);
+            });
+            */
+        })
+    })
+});
+
+</script>
+</html>

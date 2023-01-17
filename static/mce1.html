@@ -1,0 +1,305 @@
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="ru-ru" xml:lang="ru-ru" >
+<head>
+
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>Изменить страницу | Админка сайта</title>
+<!--<link rel="stylesheet" type="text/css" href="https://radomir-shop.ru/admin/css/base.css" />
+-->
+<script type="text/javascript" src="https://radomir-shop.ru/js/jquery/jquery-1.3.2.min.js"></script>
+<script type="text/javascript" src="https://radomir-shop.ru/js/tiny_mce/jquery.tinymce.js"></script>
+<script type="text/javascript" src="/static/js/admin/base.js"></script>
+
+
+
+<script src="https://radomir-shop.ru/js/CodeMirror-2.0/lib/codemirror.js"></script>
+<link rel="stylesheet" href="https://radomir-shop.ru/js/CodeMirror-2.0/lib/codemirror.css">
+<script src="https://radomir-shop.ru/js/CodeMirror-2.0/mode/javascript/javascript.js"></script>
+<link rel="stylesheet" href="https://radomir-shop.ru/js/CodeMirror-2.0/mode/javascript/javascript.css">
+
+
+    
+<link rel="stylesheet" type="text/css" href="https://radomir-shop.ru/static/admin/css/forms.css" />
+
+
+
+
+
+
+<script type="text/javascript" src="https://radomir-shop.ru/admin/jsi18n/"></script>
+<script type="text/javascript" src="https://radomir-shop.ru/static/admin/js/core.js"></script>
+<script type="text/javascript" src="https://radomir-shop.ru/static/admin/js/admin/RelatedObjectLookups.js"></script>
+<script type="text/javascript" src="https://radomir-shop.ru/static/admin/js/jquery.js"></script>
+<script type="text/javascript" src="https://radomir-shop.ru/static/admin/js/jquery.init.js"></script>
+<script type="text/javascript" src="https://radomir-shop.ru/static/admin/js/actions.js"></script>
+<script type="text/javascript" src="https://radomir-shop.ru/static/admin/js/urlify.js"></script>
+<script type="text/javascript" src="https://radomir-shop.ru/static/admin/js/prepopulate.js"></script>
+<script type="text/javascript" src="https://radomir-shop.ru/js/admin/page.js"></script>
+
+<meta name="robots" content="NONE,NOARCHIVE" />
+</head>
+
+
+<body class="cms-page change-form">
+
+<!-- Container -->
+<div id="container">
+
+    
+    <!-- Header -->
+    <div id="header">
+        <div id="branding">
+        
+<h1 id="site-name">Административная панель сайта Radomir-shop.ru</h1>
+
+        </div>
+        
+        <div id="user-tools">
+            Добро пожаловать,
+            <strong>Victor</strong>.
+            
+                
+                
+                    <a href="/admin/doc/">Документация</a> /
+                
+                
+                
+                    <a href="/admin/password_change/">
+                
+                Изменить пароль</a> /
+                
+                
+                    <a href="/admin/logout/">
+                
+                Выйти</a>
+            
+        </div>
+        
+        
+    </div>
+    <!-- END Header -->
+    
+<div class="breadcrumbs">
+<a href="/admin/">Начало</a>
+&rsaquo; <a href="/admin/cms/">Cms</a>
+&rsaquo; <a href="/admin/cms/page/">Страницы</a>
+&rsaquo; Cистема контент-менеджмента для вашего сайта Radomir® Merchant
+</div>
+
+    
+
+        
+
+    <!-- Content -->
+    <div id="content" class="colM">
+        
+        <h1>Изменить страницу</h1>
+        <div id="content-main">
+
+<form enctype="multipart/form-data" action="" method="post" id="page_form"><input type='hidden' name='csrfmiddlewaretoken' value='We943HdtNmqk2Sktd4gtFlL7wkMcfdBM' />
+<div>
+
+
+
+
+
+
+  <fieldset class="module aligned ">
+    
+    
+    
+        <div class="form-row field-title">
+            
+            
+                <div>
+                    
+                    
+                        <label class="required" for="id_title">Заголовок:</label>
+                        
+                            <input class="vTextField" id="id_title" maxlength="255" name="title" type="text" value="Cистема контент-менеджмента для вашего сайта Radomir® Merchant" />
+                        
+                    
+                    
+                </div>
+            
+        </div>
+    
+        <div class="form-row field-slug">
+            
+            
+                <div>
+                    
+                    
+                        <label class="required" for="id_slug">Псевдоним карлик, жопа, х.., гармошка:</label>
+                        
+                            <input class="vTextField" id="id_slug" maxlength="50" name="slug" type="text" value="cistema-kontent-menedzhmenta-dlya-vashego-sajta-ra" />
+                        
+                    
+                    
+                </div>
+            
+        </div>
+    
+        <div class="form-row field-content_type">
+            
+            
+                <div>
+                    
+                    
+                        <label class="required" for="id_content_type">Тип содержимого:</label>
+                        
+                            <select id="id_content_type" name="content_type">
+<option value="0">простой текст</option>
+<option value="1" selected="selected">html</option>
+<option value="2">markdown</option>
+</select>
+                        
+                    
+                    
+                </div>
+            
+        </div>
+    
+        <div class="form-row field-status">
+            
+            
+                <div>
+                    
+                    
+                        <label class="required" for="id_status_0">Статус:</label>
+                        
+                            <ul class="radiolist inline" id="id_status">
+<li><label for="id_status_0"><input class="radiolist inline" id="id_status_0" name="status" type="radio" value="1" /> В разработке</label></li>
+<li><label for="id_status_1"><input class="radiolist inline" id="id_status_1" name="status" type="radio" value="2" /> Требует утверждения</label></li>
+<li><label for="id_status_2"><input checked="checked" class="radiolist inline" id="id_status_2" name="status" type="radio" value="3" /> Публиковать</label></li>
+<li><label for="id_status_3"><input class="radiolist inline" id="id_status_3" name="status" type="radio" value="4" /> В архиве</label></li>
+</ul>
+                        
+                    
+                    
+                </div>
+            
+        </div>
+    
+        <div class="form-row field-content">
+            
+            
+                <div>
+                    
+                    
+                        <label class="required" for="id_content">Содержимое:</label>
+                        
+                            <textarea class="vLargeTextField" cols="40" id="id_content" name="content" rows="10">
+&lt;div style=&quot;text-align: center;&quot;&gt;&lt;img src=&quot;https://radomir.ru/upload/partners/merchant/Merchant_1_ru.jpg&quot; border=&quot;0&quot; alt=&quot;&quot; width=&quot;800&quot; height=&quot;565&quot; /&gt;&lt;/div&gt;
+&lt;div style=&quot;text-align: center;&quot;&gt;&lt;img src=&quot;https://radomir.ru/upload/partners/merchant/Merchant2.jpg&quot; border=&quot;0&quot; alt=&quot;&quot; width=&quot;800&quot; height=&quot;565&quot; /&gt;&lt;/div&gt;
+&lt;div style=&quot;text-align: center;&quot;&gt;&lt;img src=&quot;https://radomir.ru/upload/partners/merchant/Merchant3.jpg&quot; border=&quot;0&quot; alt=&quot;&quot; width=&quot;800&quot; height=&quot;565&quot; /&gt;&lt;/div&gt;
+&lt;div style=&quot;text-align: center;&quot;&gt;&lt;img src=&quot;https://radomir.ru/upload/partners/merchant/Merchant4.jpg&quot; border=&quot;0&quot; alt=&quot;&quot; width=&quot;800&quot; height=&quot;565&quot; /&gt;&lt;/div&gt;
+&lt;div style=&quot;text-align: center;&quot;&gt;&lt;img src=&quot;https://radomir.ru/upload/partners/merchant/Merchant5.jpg&quot; border=&quot;0&quot; alt=&quot;&quot; width=&quot;800&quot; height=&quot;565&quot; /&gt;&lt;/div&gt;
+&lt;div style=&quot;text-align: center;&quot;&gt;&lt;img src=&quot;https://radomir.ru/upload/partners/merchant/Merchant6.jpg&quot; border=&quot;0&quot; alt=&quot;&quot; width=&quot;800&quot; height=&quot;565&quot; /&gt;&lt;/div&gt;
+&lt;div style=&quot;text-align: center;&quot;&gt;&lt;img src=&quot;https://radomir.ru/upload/partners/merchant/Merchant8_ru.jpg&quot; border=&quot;0&quot; alt=&quot;&quot; width=&quot;800&quot; height=&quot;566&quot; /&gt;&lt;/div&gt;
+&lt;p&gt;&lt;br /&gt; &lt;span style=&quot;font-size: 20px;&quot;&gt;Всего несколько минут и весь ассортимент  компании &quot;Радомир&quot; уже на Вашем сайте! Мы предоставим все необходимые  данные для быстрого и удобного импорта товаров.&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;&amp;nbsp;&lt;/p&gt;
+&lt;div class=&quot;row&quot;&gt;
+&lt;div class=&quot;col-sm-6&quot;&gt;
+&lt;p style=&quot;text-align: center;&quot;&gt;&lt;a style=&quot;margin: 0px 0 0 0; padding: 15px 30px; color: #fff; background-color: #302014; font-size: 1em; line-height: 1em; text-decoration: none; display: inline-block; text-align: center; text-transform: uppercase; border-radius: 5px; font-weight: normal;&quot; href=&quot;http://www.radomir.ru/upload/exchange/goods.xml&quot;&gt;скачать товары в xml&lt;/a&gt;&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&quot;col-sm-6&quot;&gt;
+&lt;p style=&quot;text-align: center;&quot;&gt;&lt;a style=&quot;margin: 0px 0 0 0; padding: 15px 30px; color: #fff; background-color: #302014; font-size: 1em; line-height: 1em; text-decoration: none; display: inline-block; text-align: center; text-transform: uppercase; border-radius: 5px; font-weight: normal;&quot; href=&quot;http://www.radomir.ru/upload/exchange/offers.xml&quot;&gt;скачать предложения в xml&lt;/a&gt;&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;</textarea>
+                        
+                    
+                    
+                </div>
+            
+        </div>
+    
+        <div class="form-row field-meta_keywords">
+            
+            
+                <div>
+                    
+                    
+                        <label for="id_meta_keywords">Meta keywords:</label>
+                        
+                            <textarea class="vLargeTextField" cols="40" id="id_meta_keywords" name="meta_keywords" rows="10">
+</textarea>
+                        
+                    
+                    
+                </div>
+            
+        </div>
+    
+        <div class="form-row field-meta_description">
+            
+            
+                <div>
+                    
+                    
+                        <label for="id_meta_description">Meta description:</label>
+                        
+                            <textarea class="vLargeTextField" cols="40" id="id_meta_description" name="meta_description" rows="10">
+</textarea>
+                        
+                    
+                    
+                </div>
+            
+        </div>
+    
+</fieldset>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="submit-row">
+<input type="submit" value="Сохранить" class="default" name="_save" />
+
+    
+    <p class="deletelink-box"><a href="/admin/cms/page/87/delete/" class="deletelink">Удалить</a></p>
+
+
+<input type="submit" value="Сохранить и добавить другой объект" name="_addanother" />
+<input type="submit" value="Сохранить и продолжить редактирование" name="_continue" />
+</div>
+
+
+
+
+
+
+<script type="text/javascript">
+(function($) {
+    var field;
+
+
+})(django.jQuery);
+</script>
+
+
+</div>
+</form></div>
+
+        
+        <br class="clear" />
+    </div>
+    <!-- END Content -->
+
+    <div id="footer"></div>
+</div>
+<!-- END Container -->
+
+</body>
+</html>

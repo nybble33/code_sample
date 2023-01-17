@@ -1,0 +1,59 @@
+{% extends "base.html" %}
+{% block content %}
+<h1>All pages of Semin Club site!!!</h1>
+<img src="http://lurkmore.so/images/2/29/HP_and_snakes_lang.png" />
+<div>
+    <ul>
+        {% for page in pages %}
+            <li><a href="/page/{{ page.slug }}">{{ page.title }}</a></li>
+        {% endfor %}
+    </ul>
+</div>
+<table>
+    <tr>
+        <td>
+Beautiful is better than ugly.<br />
+Explicit is better than implicit.<br />
+Simple is better than complex.<br />
+Complex is better than complicated.<br />
+Flat is better than nested.<br />
+Sparse is better than dense.<br />
+Readability counts.<br />
+Special cases aren't special enough to break the rules.<br />
+Although practicality beats purity.<br />
+Errors should never pass silently.<br />
+Unless explicitly silenced.<br />
+In the face of ambiguity, refuse the temptation to guess.<br />
+There should be one-- and preferably only one --obvious way to do it.<br />
+Although that way may not be obvious at first unless you're Dutch.<br />
+Now is better than never.<br />
+Although never is often better than *right* now.<br />
+If the implementation is hard to explain, it's a bad idea.<br />
+If the implementation is easy to explain, it may be a good idea.<br />
+Namespaces are one honking great idea -- let's do more of those!<br />
+
+        </td>
+        <td>
+Красивое лучше, чем уродливое.<br />
+Явное лучше, чем неявное.<br />
+Простое лучше, чем сложное.<br />
+Сложное лучше, чем запутанное.<br />
+Плоское лучше, чем вложенное.<br />
+Разреженное лучше, чем плотное.<br />
+Читаемость имеет значение.<br />
+Особые случаи не настолько особые, чтобы нарушать правила.<br />
+При этом практичность важнее безупречности.<br />
+Ошибки никогда не должны замалчиваться.<br />
+Если не замалчиваются явно.<br />
+Встретив двусмысленность, отбрось искушение угадать.<br />
+Должен существовать один — и, желательно, только один — очевидный способ сделать это.<br />
+Хотя он поначалу может быть и не очевиден, если вы не голландец.<br />
+Сейчас лучше, чем никогда.<br />
+Хотя никогда зачастую лучше, чем прямо сейчас.<br />
+Если реализацию сложно объяснить — идея плоха.<br />
+Если реализацию легко объяснить — идея, возможно, хороша.<br />
+Пространства имён — отличная штука! Будем делать их побольше.
+        </td>
+    </tr>
+</table>
+{% endblock %}

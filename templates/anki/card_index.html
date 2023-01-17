@@ -1,0 +1,112 @@
+{% extends "base.html" %}
+{% block header %}
+    <title>All words in anki dictionary.</title>
+<style>
+.a_button{
+    cursor: pointer;
+}
+#card_info input{
+    border: solid 1px #000;
+}
+.hidden{
+    display: none;
+}
+</style>
+{% endblock %}
+{% block content %}
+
+<table>
+{% for card in cards %}
+    <tr word_id="{{ card.id }}">
+        <td>{{ card.id }}</td>
+        <td>{{ card.en_word }}</td>
+        <td>{{ card.rus_word }}</td>
+        <td class="a_button" open word_id="{{ card.id }}">OPEN</td>
+        <td class="a_button" remove word_id="{{ card.id }}">DELETE</td>
+    </tr>
+{% endfor %}
+</table>
+<form id="card_info">
+    <table>
+        <tr class="hidden"><td></td><td><input type="text" name="id" /></td></tr>
+        <tr><td>English:</td><td><input type="text" name="en_val" /></td></tr>
+        <tr><td>English description:</td><td><input type="text" name="en_desc"></td></tr>
+        <tr><td>Russian:</td><td><input type="text" name="rus_val"></td></tr>
+        <tr><td>Russian description:</td><td><input type="text" name="rus_desc"></td></tr>
+        <tr><td></td><td><input type="submit" value="SAVE" /></td>
+    </table>
+</form>
+<div id="fill_form">FILL FORM</div>
+{% endblock %}
+{% block extra_bottom %}
+<script type="text/javascript">
+
+class Card {
+    constructor(id, show=true){
+        this.id = id;
+        $.ajax({
+            type: "GET",
+            url: "/anki/get_card",
+            data: {"id": id},
+            dataType: "json",
+            async: false,
+            context: this,
+        }).done(function(data){
+            this.en_word = data.en_word;
+            this.rus_word = data.rus_word;
+            this.en_desc = data.en_desc;
+            this.rus_desc = data.rus_desc;
+        });
+        if (show){
+            this.show();
+        };
+    }
+    show(){
+        $("[name='en_val']").val(this.en_word);
+        $("[name='rus_val'").val(this.rus_word);
+        $("[name='en_desc'").val(this.en_desc);
+        $("[name='rus_desc'").val(this.rus_desc);
+    }
+    remove(){
+        $.ajax({
+            type: "POST",
+            url: "/anki/remove_card/",
+            dataType: "json",
+            async: false,
+            data: {
+                id: this.id,
+                csrfmiddlewaretoken: '{{ csrf_token }}',
+            },
+        }).done(function(data){
+            console.log(data); // Here goes handler!!!
+        })
+    }
+}
+
+$(document).ready(function(){
+
+    $("[open]").on("click", function(e){
+        console.log(`Ready to open element ${$(this).attr("word_id")}`);
+        some_card = new Card($(this).attr("word_id"));
+    });
+
+    $("[remove]").on("click", function(e){
+        console.log(`Ready to remove element ${$(this).attr("word_id")}`);
+        some_card = new Card($(this).attr("word_id"), false);
+        some_card.remove();
+    })
+
+    $("#card_info").on("submit", function(event){
+        event.preventDefault();
+        console.log("Ready to update data");
+    });
+
+    // Test for card creation
+    $("#fill_form").on("click", function(){
+        console.log("Create SHIT word");
+        some_card = new Card("1");
+    })
+
+});
+</script>
+{% endblock %}

@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Submenu</title>
+<style type="text/css">
+
+.menu-item{
+    display: block;
+    float: left;
+    padding: 10px 30px;
+    cursor: pointer;
+    width: 100px;
+}
+.menu-item:hover{
+    color: #f00;
+}
+.menu-item:hover div{
+    display: block;
+}
+.menu-item div{
+    display: none;
+    position: relative;
+}
+
+</style>
+</head>
+<body>
+<div class='submenu'>
+    <div class='menu-item'>Item 1
+        <div class='sub-menu'>
+            <div class='sub-menu-item'>Item 1.1</div>
+            <div class='sub-menu-item'>Item 1.2</div>
+            <div class='sub-menu-item'>Item 1.3</div>
+            <div class='sub-menu-item'>Item 1.4</div>
+        </div>
+    </div>
+    <div class='menu-item'>Item 2
+        <div class='sub-menu'>
+            <div class='sub-menu-item'>Item 2.1</div>
+            <div class='sub-menu-item'>Item 2.2</div>
+            <div class='sub-menu-item'>Item 2.3</div>
+            <div class='sub-menu-item'>Item 2.4</div>
+        </div>
+    </div>
+    <div class='menu-item'>Item 3</div>
+    <div class='menu-item'>Item 4</div>
+</div>
+</body>
+</html>

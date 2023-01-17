@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Kitchen</title>
+
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+
+
+<!-- jQuery Modal -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-modal/0.9.1/jquery.modal.min.js"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-modal/0.9.1/jquery.modal.min.css" />
+
+<style type="text/css">
+
+.sprite{
+    cursor: pointer;
+    /*background-color: #fff;*/
+    fill: #fff;
+    opacity: 0;
+}
+.sprite:hover{
+    /*background-color: #0000ff;*/
+    opacity: .5;
+}
+.sprite_txt{
+    display: none;
+}
+/*
+#out_center{
+    position: absolute;
+    width: 50%;
+    height: 50%;
+    border: solid 2px #ebaeba;
+    top: 100px;
+    left:200px;
+    text-align: center;
+
+
+}
+
+#center{
+    display: inline-block;
+    width: 50%;
+    height: 30%;
+    border: solid 3px #0ff;
+    position: relative;
+    top: 50%;
+    transform: perspective(1px) translateY(-50%);
+}
+#center p{
+    margin: auto;
+    position: relative;
+    top: 50%;
+    transform: perspective(1px) translateY(-50%);
+    color: #fff;
+}
+*/
+.sprite_text{
+    display: inline-block;
+}
+</style>
+</head>
+<body>
+<h1>Kitchen picture. Картинка кухни</h1>
+<!-- Modal HTML embedded directly into document -->
+<div id="ex1" class="modal">
+  <p>Thanks for clicking. That felt good.</p>
+  <a href="#" rel="modal:close">Close</a>
+</div>
+
+<!-- Link to open the modal -->
+<p><a href="#ex1" rel="modal:open">Open Modal</a></p>
+
+
+<div class='map'>
+
+<svg xmlns="http://www.w3.org/2000/svg" xml:space="preserve" width="500px" height="345px" version="1.1" style="shape-rendering:geometricPrecision; text-rendering:geometricPrecision; image-rendering:optimizeQuality; fill-rule:evenodd; clip-rule:evenodd"
+viewBox="0 0 504.54 348.33"
+ xmlns:xlink="http://www.w3.org/1999/xlink">
+ <defs>
+  <style type="text/css">
+   <![CDATA[
+    .str0 {stroke:black;stroke-width:1.89;stroke-miterlimit:22.9256}
+    .fil0 {fill:none}
+   ]]>
+  </style>
+   <clipPath id="id0">
+    <rect width="504.54" height="348.33"/>
+   </clipPath>
+ </defs>
+ <g id="Слой_x0020_1">
+  <metadata id="CorelCorpID_0Corel-Layer"/>
+  <g style="clip-path:url(#id0)">
+   <image x="0" y="0" width="504.54" height="348.33" xlink:href="/static/images/kitchen4_Images/kitchen4_ImgID1.jpg"/>
+  </g>
+  <path class="sprite" txt_dom='cabage_text' d="M251.37 233.42c22.81,0 41.3,18.49 41.3,41.3 0,22.8 -18.49,41.29 -41.3,41.29 -22.8,0 -41.29,-18.49 -41.29,-41.29 0,-22.81 18.49,-41.3 41.29,-41.3z"/>
+  <path class="sprite" word='a cucumber<br>огурец' d="M150.06 320.29c14.96,-11.22 9.82,-6.54 24.31,-12.62 14.5,-6.08 17.77,-9.82 19.64,-4.21 1.87,5.61 -0.93,8.88 -0.93,8.88l-6.55 7.95 -9.82 5.15 -14.03 7.01 -10.75 2.81 -5.14 0 -3.28 -5.61 6.55 -9.36z"/>
+ </g>
+</svg>
+
+</div>
+<!--
+<div id='out_center'>
+    <div id='center'><p>This is a centered text11</p></div>
+</div>
+-->
+<div id='cabage_text' class='sprite_txt'>
+    <span style='color: #f00'>КАПУСТОЧКА</span>
+</div>
+
+<!-------------------------------------------------------->
+<!-- 
+<div id="mn_fade" style="position:absolute; top:0; left:0; background-color:#000; opacity:.7; width:100%; height:100%; text-align:center;">
+
+
+    <div style='display:inline-block; width:50%; height:30%; background-color:#FFF; position:relative; top:50%; transform:perspective(1px) translateY(-50%); overflow: auto;'>
+        <p style='margin:auto; position:relative; top:50%; height: 100%; transform: perspective(1px) translateY(-50%); color: #000; font-size:3em;'>
+    
+    
+            <div>
+                <span style='color: #f00'>КАПУСТОЧКА</span>
+                <audio controls>
+                    <source src="https://semin-club.ru/audio/var9.mp3" type="audio/mpeg">
+                    Тег audio не поддерживается вашим браузером. 
+                    <a href="/audio/var9.mp3">Скачайте файл</a>.
+                </audio>
+            </div>
+    
+    
+    
+        </p>
+    </div>
+
+</div>
+ -->
+<!-------------------------------------------------------->
+
+
+<script type="text/javascript">
+
+$.fn.hasAttr = function(name) {  
+   return this.attr(name) !== undefined;
+};
+
+draw_fade = function(){
+    $('body').append('<div id="mn_fade" style="position:absolute; top:0; left:0; background-color:#000; opacity:.7; width:100%; height:100%; text-align:center;"></div>');
+    $('#mn_fade').click(function(){
+        $(this).remove();
+    });
+}
+
+fill_fade = function(text){
+    $('#mn_fade').html("<div style='display:inline-block; width:50%; height:30%; background-color:#FFF; position:relative; top:50%; transform:perspective(1px) translateY(-50%);'><p style='margin:auto; position:relative; top:50%; transform: perspective(1px) translateY(-50%); color: #000; font-size:3em;'>"+text+"</p></div>");
+}
+
+open_nmodal = function(sh){
+    draw_fade();
+    if (sh.hasAttr('word')){
+        fill_fade(sh.attr('word'));
+    } else {
+        if (sh.hasAttr('txt_dom')){
+            fill_fade($('#'+sh.attr('txt_dom')).html());
+        } else {
+            fill_fade('not defined');
+        }
+    }
+};
+
+    $('.sprite').click(function () {
+        //alert($(this).attr('word'));
+        open_nmodal($(this));
+    })
+</script>
+</body>
+</html>

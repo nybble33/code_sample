@@ -1,0 +1,8 @@
+{% extends 'base.html' %}
+{% block content %}
+<h1>Total found {{ total }} friends</h1>
+<p>Here are their id's :</p>
+{% for item in items %}
+{{ item.id }}<br>
+{% endfor %}
+{% endblock %}

@@ -1,0 +1,43 @@
+{% extends "base.html" %}
+{% block header %}
+    <title>Nybble. Happy coding & Lucky hacking.</title>
+{% endblock %}
+{% block content %}
+<div class='lorem_ipsum'>
+
+    <div class="row">
+      <div class="col s6">
+        <a href="/m_design/bin_mouse" title="Binary Mouse"><img class='col s3 circle' src='/static/images/mouse_cropped_150.png' alt='binary mouse' /><span class="col s9 valign-wrapper flow-text">Mouse game.</span></a>
+      </div>
+      <div class="col s6">
+        <a href="/m_design/sieve_era" title="Sieve of Eratosthene"><img class='col s3 circle' src='/static/images/erato_cropped_100.png' alt='binary mouse' /><span class="col s9 valign-wrapper flow-text truncate">Sieve of Eratosthene.</span></a>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col s6">
+        <a href="/tools/dndrop" title="Drag AndDrop"><img class='col s3 circle' src='/static/images/dragndrop_100.png' alt='binary mouse' /><span class="col s9 valign-wrapper flow-text truncate">Drag And Drop</span></a>
+      </div>
+    </div>
+    
+    <a id="gismo" data-fancybox href="/static/images/gismo.jpg">
+      <img src="/static/images/gismo_small.jpg">
+    </a>
+</div>
+
+<script type="text/javascript">
+  /*
+  $(document).ready(function(){
+    alert("Fancy box starts.");
+
+    $("#gismo").fancybox({
+        helpers : {
+            title : {
+                type : "inside",
+            }
+        }
+    });
+
+  })
+  */
+</script>
+{% endblock %}

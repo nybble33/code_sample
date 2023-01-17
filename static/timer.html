@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Timer code</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+</head>
+<body>
+<h1>Timer code page</h1>
+<div id='my_div'>This is </div>
+ <div>Registration closes in <span id="time">05:00</span> minutes!</div>
+<script type="text/javascript">
+/*
+$(document).ready(function(){
+    var j = 10;
+    ///alert('Start');
+    $('body').append($('<div id="n_timer">Added Element</div>'));
+    //alert('Now 30');
+    var message = 'I will blow in ';
+    var tt = 30;
+    $('#n_timer').html(message+tt);
+
+});
+*/
+function startTimer(duration, display) {
+    var timer = duration, minutes, seconds;
+    setInterval(function () {
+        minutes = parseInt(timer / 60, 10);
+        seconds = parseInt(timer % 60, 10);
+
+        minutes = minutes < 10 ? "0" + minutes : minutes;
+        seconds = seconds < 10 ? "0" + seconds : seconds;
+
+        display.text(minutes + ":" + seconds);
+
+        if (--timer < 0) {
+            //timer = duration;
+            //alert('Time is over!');
+            window.location = '/';
+        }
+    }, 1000);
+}
+
+jQuery(function ($) {
+    var fiveMinutes = 5,
+        display = $('#time');
+    startTimer(fiveMinutes, display);
+});
+
+</script>
+
+</body>
+</html>

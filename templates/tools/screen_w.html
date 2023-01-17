@@ -1,0 +1,39 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h2>Screen width page!</h2>
+
+<h2>User agent string from view: ... {{ user_agent }}</h2>
+<p>User agent right from template: {{request.headers.user_agent }}</p>
+<p>Some local: {{ some_local }}</p>
+
+<div>Screen</div>
+<div id='s_width'></div>
+<div id='s_height'></div><br />
+
+<div>Page</div>
+<div id='p_width'></div>
+<div id='p_height'></div><br />
+
+<div>Window</div>
+<div id='w_width'>ww</div>
+<div id='w_height'>wh</div>
+
+<script type="text/javascript">
+
+
+$(document).ready(function(){
+    //alert('Ready to go');
+    $('#s_width').html('Screen width = ' + $(window).width());
+    $('#s_height').html('Screen height = ' + $(window).height());
+    $('#p_width').html('Page width = '+ $(document).width());
+    $('#p_height').html('Page height = ' + $(document).height());
+    $('#w_width').html('Window width = '+ window.screen.width);
+    $('#w_height').html('Window height = ' + window.screen.height);
+    //alert(window.screen.availWidth);
+    //alert(window.screen.availHeight);
+});
+
+</script>
+
+{% endblock %}

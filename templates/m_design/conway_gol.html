@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <link rel="icon" href="/static/n_logo.ico">
+  <meta charset="utf-8">
+  <title>Conway's game of life</title>
+  <link rel="stylesheet" type="text/css" href="/static/css/materialize/materialize.css" />
+<style type="text/css">
+
+.cell{
+  width: 20px;
+  height: 20px;
+  line-height: 19px;
+  position: relative;
+  float: left;
+}
+.clear{
+   clear: both;
+}
+.alive{
+  background-color: #FF0000;
+}
+.dead{
+  background-color: #000;
+}
+
+</style>
+</head>
+<body>
+<div class="container">
+  <div class="row">
+    <h2 class="col s10 offset-s1 center green-text">Game of life</h2>
+  </div>
+  <div class="row">
+    <form class="col s6 offset-s3">
+      <input class="col s6" type="text" placeholder="Earth width" name="earth_width" id="e_width" />
+      <input class="col s6" type="text" placeholder="Earth height" name="earth_height" id="e_height" />
+      <input class="col s6" type="text" placeholder="Colony width" name="colony_width" id="c_width" />
+      <input class="col s6" type="text" placeholder="Colony height" name="colony_heigth" id="c_heigth" />
+      <a id="startBtn" class="col s6 offset-s3 waves-effect waves-light btn">Start to live</a>
+    </form>
+  </div>
+  <div class="row" id="earth">
+    <!--
+    <div class="cell alive"></div>
+    <div class="cell dead"></div>
+    <div class="cell alive"></div><div class="clear"></div>
+    <div class="cell dead"></div>
+    <div class="cell alive"></div>
+    <div class="cell dead"></div>
+    -->
+  </div>
+</div>
+  <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+  <script src="/static/js/materialize/materialize.js"></script>
+  <script src="/static/js/conway_gol.js"></script>
+
+</body>
+</html>

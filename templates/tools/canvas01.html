@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h2>Canvas excercise No 1</h2>
+<canvas id="example">Update your browser!</canvas>
+<script type="text/javascript">
+
+var example = document.getElementById("example");
+ptx = example.getContext('2d');
+
+example.height = 500;
+example.width = 500;
+
+ptx.beginPath();
+ptx.moveTo(0, 0);
+ptx.lineTo(250, 50);
+ptx.stroke();
+</script>
+
+{% endblock %}

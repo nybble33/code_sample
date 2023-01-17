@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Shake this</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+
+<style type="text/css">
+.shaked1{
+    width: 200px;
+    height: 70px;
+    background-color: #ebaeba;
+    border: solid 3px #000;
+}
+#shaked{
+    /*animation: translate 6s linear;
+    animation: rotate 6s linear infinite;
+    transition: all 2s ease-in-out;*/
+}
+#move, #imove{
+    width: 200px;
+    height: 70px;
+    background-color: #00f;
+    color: #fff;
+    border: solid 3px #000;
+    cursor: pointer;
+}
+#new_move{
+    width: 200px;
+    height: 70px;
+    background-color: #0f0;
+    color: #fff;
+    border: solid 3px #000;
+    cursor: pointer;
+}
+#home, #ihome, #isleez{
+    width: 200px;
+    height: 70px;
+    background-color: #0ff;
+    color: #fff;
+    border: solid 3px #000;
+    cursor: pointer;
+}
+#start, #istart{
+    width: 200px;
+    height: 70px;
+    background-color: #facfac;
+    border: solid 3px #000;
+    cursor: pointer;
+}
+</style>
+
+</head>
+<body><br><br>
+<div id='shaked' class='shaked1' ololo='Pshpsh'>I'm ready to be shocked</div>
+<br>
+<div id='imove' ololo='iZadnica'>i Move</div><br>
+<div id='ihome'>i Home</div><br>
+<div id='isleez'>i Sleez</div><br>
+<div id='istart'>i Start</div><br>
+
+<script type="text/javascript">
+
+function random20(){return(Math.round(Math.random()*30))}
+
+function move(elem){
+    elem.css({top:elem.position().top, left:elem.posiotion().left})
+}
+
+save_position = function(elem){
+    pos = elem.position();
+    elem.attr('s_top', pos.top);
+    elem.attr('s_left', pos.left);
+    elem.attr('s_pos', elem.css('position'));
+};
+move_home = function(elem){
+    elem.css('opacity', '1');
+    $('.gap').each(function(i, elem){$(elem).remove()});
+};
+
+change_position1 = function(elem, xtop, xleft){
+    elem_clone = elem.clone();
+    elem_clone.addClass('gap');
+    clone_style = 'position:absolute; top:'+xtop+'px;left:'+xleft+'px';
+    elem_clone.attr('style', clone_style);
+    //sleeze(elem_clone);
+    $('body').append(elem_clone);
+    elem.css('opacity', '0');
+};
+
+function ihome(){
+    $('.gap').each(function(index){
+        $(this).remove();
+    });
+    $('#shaked').css('opacity', 1);
+};
+
+function wave(elem){
+    alert('Wave!!');
+};
+
+function sleeze(elem){
+    pos = elem.position();
+    //alert(pos.top+'-'+pos.left);
+    new_top = pos.top+random20();
+    new_left = pos.left+random20();
+    st = 'position:absolute;top:'+new_top+'px; left:'+new_left+'px';
+    //alert(st);
+    $('.gap').each(function(index){
+        $(this).remove();
+    });
+    change_position1(elem, new_top, new_left);
+    //$('.gap').attr('style', st);
+    //elem.css({top:})
+};
+
+var new_div;
+
+$(document).ready(function(){
+    $('#imove').on('click', function(){
+        change_position1($('#shaked'), 100, 400);
+    });
+    $('#ihome').on('click', function(el){
+        ihome();
+    });
+    $('#istart').on('click', function(el){
+        wave($('#shaked'));
+        for (i=1; i<1000; i++){
+            let timerId = setInterval(() => change_position1($('#shaked'),100,400), 100);
+            setTimeout(() => {clearInterval(timerId); ihome();}, 200);
+        };
+    });
+    $('#isleez').on('click', function(){
+        sleeze($('#shaked'));
+    });
+});
+</script>
+
+</body>
+</html>

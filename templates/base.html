@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html>
+<head>
+{% block icon %}
+    <link rel="icon" href="/static/n_logo.ico">
+{% endblock %}
+{% block header %}
+    <title>Nybble. Happy coding & Lucky hacking.</title>
+{% endblock %}
+{% block extra_head %}
+
+  <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+
+  <link  href="/static/fancybox/jquery.fancybox.min.css" rel="stylesheet">
+  <script src="/static/fancybox/jquery.fancybox.min.js"></script>
+
+{% endblock %}
+
+    <meta charset="UTF-8" />
+
+    <link rel="stylesheet" type="text/css" href="/static/css/main_01.css" />
+    <link rel="stylesheet" type="text/css" href="/static/css/materialize/materialize.css" />
+
+<!-------------------------->
+
+</head>
+<body>
+<!--
+<div class='user_name' style="z-index: 2000">
+    {% if request.user.is_authenticated %}
+        Hello, {{ request.user.username }}.<a href='/logout'>Logout</a>
+        {% if user.username == 'nybble' %}
+            &nbsp;&nbsp;<span class='accent'> Ready for you!</span>
+        {% endif %}
+        {% if user.is_staff %}
+             &nbsp;&nbsp;&nbsp;<a href='/admin' target='_blank'> Administration</a>
+        {% endif %}
+        {% if user.userprofile.anki_user %}
+            <span>&nbsp;&nbsp;&nbsp;<a href="/anki">ANKI</a></span>
+        {% else %}
+            <span>NOT ANKI</span>
+        {% endif %}
+        {% if user.userprofile.has_room %}
+            <span>&nbsp;Your &nbsp;&nbsp;<a href="/room">PRIVATE OFFICE</a></span>
+        {% else %}
+            <span>You haven't personal room</span>
+        {% endif %}
+    {% else %}
+        Необходима &nbsp;&nbsp;<a id='auth_button' href='/login?from={{ request.path_info }}'>    авторизация.
+    {% endif %}
+</div>
+-->
+{% load cms_tags %}
+
+<div class="container">
+  <div class="row">
+    <div class="col s12 card">
+      <div class="col l3 s6">
+        <a href='/' title='Home page'>
+          <img src='/static/images/n_logo1_200.png' />
+        </a>
+      </div>
+      <div class="s9 green-text text-accent-3 valign-wrapper">
+        <!--<div class="row">-->
+          <div class="col s6">
+            <h1>Nybble</h1>
+          </div>
+          <div class="col s6">
+            <div>Nybble</div>
+          </div>
+        <!--</div>-->
+      </div>
+    </div>
+  </div>
+{% block content %}
+{% endblock %}
+
+<!--
+<div class='clear'></div>
+<div id='main_menu'>
+{% n_menu request %}
+</div>
+<div id='content'>
+</div>
+-->
+
+</div><!-- container -->
+</body>
+
+<script type="text/javascript">
+
+    var open_close_time = 600;
+
+    function hide_auth_form(){
+        $('#pop_up').hide();
+        $('#auth_wrapper').hide(open_close_time);
+    }
+
+    function show_auth_form(){
+        $('#pop_up').show();
+        $('#auth_wrapper').show(open_close_time);
+    }
+
+    $(document).ready(function(){
+
+        $('#auth_button').click(function(evt){
+            evt.preventDefault();
+            show_auth_form();
+        });
+
+        $('#close_auth_cross').click(hide_auth_form);
+        $("input[name='auth_cancel_button']").click(hide_auth_form);
+
+    });
+
+</script>
+
+{% block extra_bottom %}
+{% endblock %}
+
+</html>

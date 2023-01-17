@@ -1,0 +1,10 @@
+from django.conf.urls import url
+
+# import views here
+from nbot.views import webhook
+
+urlpatterns = [
+    # url(r'^$', screen_width),
+    # url(r'^tinymce/$', tiny_mce),
+    url(r'^1842197193/$', webhook),
+]

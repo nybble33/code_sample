@@ -1,0 +1,16 @@
+#!/usr/bin/python
+import sys
+import os
+from termcolor import colored
+
+
+if __name__ == '__main__':
+    if len(sys.argv)<2:
+        exit(colored('One \'on\' or \'off\' required but nothing\'s given', 'red'))
+    if sys.argv[1] == 'off':
+        os.system("/home/nybble/utils/chln/chln.py 'settings.py' 'DEBUG = True' 'DEBUG = False'")
+        exit(colored('Debug is switched off', 'green'))
+    if sys.argv[1] == 'on':
+        os.system("/home/nybble/utils/chln/chln.py 'settings.py' 'DEBUG = False' 'DEBUG = True'")
+        exit(colored('Debug is switching on', 'cyan'))
+    print(colored('Your argument is wrong. It must be \'on\' or \'off\'', 'red')) 

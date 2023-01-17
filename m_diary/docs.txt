@@ -1,0 +1,36 @@
+Documentation for "magic diary" application.
+(c) by Nybble
+
+"m_diary" model
+
+Item:
+< slug >
+< title >
+< user >
+< item_type >
+< short_description >
+< content >
+< created >
+< start_date>
+< deadline >
+< in_work >
+< finished >
+
+Item_Type:
+< name >
+< active >
+
+SQL commands:
+ CREATE TABLE `m_diary_item` (
+  `id` int(11) primary key NOT NULL AUTO_INCREMENT,
+  `slug` varchar(50) NOT NULL,
+  `owner` int(11) NOT NULL,
+  `item_type` int(11) NOT NULL,
+  `short_description` varchar(255) DEFAULT NULL,
+  `content` longtext,
+  `created` datetime(6) NOT NULL,
+  `start_date` datetime(6) NOT NULL,
+  `deadline` datetime(6),
+  `in_work` tinyint(1),
+  `finished` tinyint(1)
+) ENGINE=MyISAM AUTO_INCREMENT=3 DEFAULT CHARSET=utf8 

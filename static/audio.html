@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Audio play</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+</head>
+<body>
+
+<div class='audio_title'>PIG - </div>
+<!--
+  <audio controls>
+    <source src="/static/audio/pig.mp3" type="audio/mpeg" >
+    Тег audio не поддерживается вашим браузером. 
+    <a href="/static/audio/pig.mp3">Скачайте файл</a>.
+  </audio>
+-->
+<!--<audio src="/static/audio/PIG.mp3" autoplay="autoplay"></audio>-->
+
+<p onclick="soundClick()">Кликни по этому тексту</p>
+
+
+<br>
+<div id='aydio1' class='audio_title'>Variant 6 - </div>
+  <audio controls>
+    <source src="/static//audio/var6.mp3" type="audio/mpeg">
+    Тег audio не поддерживается вашим браузером. 
+    <a href="/static/audio/var6.mp3">Скачайте файл</a>.
+  </audio>
+<br>
+<p onclick="soundClick1()">One more try</p>
+
+<audio id="audio" src="/static/audio/var6.mp3"></audio>
+
+<p onclick="piggy()">Piggy</p>
+
+<script type="text/javascript">
+
+var audio = new Audio();
+audio.preload = 'auto';
+audio.src = '/static/audio/pig.mp3';
+//audio.play();
+
+function soundClick() {
+alert("ololo");
+  var audio = new Audio(); // Создаём новый элемент Audio
+  audio.src = '/static/audio/pig.mp3'; // Указываем путь к звуку "клика"
+  audio.autoplay = true; // Автоматически запускаем
+}
+
+function soundClick1() {
+  //var audio = new Audio('/static/audio/var6.mp3'); // Создаём новый элемент Audio
+   var audio1 = document.getElementById('audio');
+alert("11111111");
+   audio1.play();
+  //audio.play() = true; // Автоматически запускаем
+}
+
+function piggy(){
+  var a_pig = document.getElementById('audio');
+  a_pig.src = '/static/audio/pig.mp3';
+  a_pig.play();
+}
+
+</script>
+
+</body>
+</html>

@@ -1,0 +1,16 @@
+1842197193:AAHH55ZLId2UkgcA8u9BBfnOC7q_m8y8qGs
+
+WebHook:
+
+Get webhook status:
+https://api.telegram.org/bot1842197193:AAHH55ZLId2UkgcA8u9BBfnOC7q_m8y8qGs/getWebhookInfo
+
+Token for the bot nbot @NybbleBot has been revoked. New token is:
+1842197193:AAGAkU5t6JYzeBogk2RAl2u-v7HHyNKmnp0
+
+Для официального сертификата SSL:
+
+https://api.telegram.org/botТОКЕН/setWebhook?url=ВАШ_ДОМЕН
+Для самоподписанного сертификата:
+
+https://api.telegram.org/botТОКЕН/setWebhook?url=ВАШ_ДОМЕН&certificate=ФАЙЛ_СЕРТИФИКАТА

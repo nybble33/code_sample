@@ -1,0 +1,9 @@
+{% if items %}
+    <ul>
+        {% for item in items %}
+        <li>{{ item.title }}
+            {{ item.childs|safe }}
+        </li>
+        {% endfor %}
+    </ul>
+{% endif %}

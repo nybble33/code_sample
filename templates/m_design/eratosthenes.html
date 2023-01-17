@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <link rel="icon" href="/static/n_logo.ico">
+  <meta charset="utf-8">
+  <title>Sieve of Eratosthene</title>
+  <link rel="stylesheet" type="text/css" href="/static/css/materialize/materialize.css" />
+</head>
+<body>
+
+<div class='container'>
+  <div class='row card-panel pink lighten-5'>
+    <div class='col s1 center'>
+      <a href="/" title="Home page"><img class='circle' src='/static/images/erato_cropped_100.png' alt='erato' /></a>
+    </div>
+    <h1 class='col s10 center red-text offset-s1'>Sieve of Eratosthenes</h1>
+  </div>
+  <div class="row">
+    <form class="col s6 offset-s3">
+      <div class="row">
+        <div class="input-field col s12">
+          <input class="col s6" placeholder="Max Number" id="maxNum" type="text" name="maxNum">
+          <a id="startBtn" class="col s6 waves-effect waves-light btn">Choose</a>
+        </div>
+          <a id="swBtn" class="col s12 waves-effect waves-light btn">Start Boo Boo</a>
+      </div>
+    </form>
+  </div>
+  <div class="row">
+    <form class="col s6 offset-s3">
+      <div class="row">
+        <div class="input-field col s12">
+          <!--<input class="col s6" placeholder="Number to Switch" id="swNum" type="text" name="swNum">-->
+          <!--<a id="swBtn" class="col s12 waves-effect waves-light btn">Start Boo Boo</a>-->
+        </div>
+      </div>
+    </form>
+  </div>
+  <div id='sieve'></div>
+</div>
+
+  <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+  <script src="/static/js/materialize/materialize.js"></script>
+  <script src="/static/js/sieve_e.js"></script>
+
+</body>
+</html>
